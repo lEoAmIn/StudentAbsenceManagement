@@ -25,5 +25,10 @@ namespace StudentAbsenceManagement
 
             return null;
         }
+        //// create the get all students method 
+        public List<Student> GetAllStudents()
+        {
+            return students.Values.ToList();    
+        }
     }
 }
