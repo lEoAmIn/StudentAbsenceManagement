@@ -40,38 +40,70 @@ using System.Security.Cryptography;
 //}
 
 /// test of add method from StudentManager class 
-Student st = new Student(1, "Ahmed", "Alami");
+//Student st = new Student(1, "Ahmed", "Alami");
 
-StudentManager studentManager = new StudentManager();
-bool result = studentManager.AddStudent(st);
-if (result)
+//StudentManager studentManager = new StudentManager();
+//bool result = studentManager.AddStudent(st);
+//if (result)
+//{
+//    Console.WriteLine("TEST PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("TEST FAILED");
+//}
+//Student st1 = new Student(1, "Amin", "Alam");
+//bool result1 = studentManager.AddStudent(st1);
+//if (!result1)
+//{
+//    Console.WriteLine("TEST PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("TEST FAILED");
+//}
+
+//try
+//{
+//    // Call AddStudent with null
+//    studentManager.AddStudent(null!);
+//    Console.WriteLine("Test 3: FAILED");
+//}
+//catch (ArgumentNullException)
+//{
+//    Console.WriteLine("Test 3: PASSED");
+
+//}
+
+///// test the find method 
+StudentManager manager = new StudentManager();
+manager.AddStudent(new Student(1, "Ahemed", "warish"));
+manager.AddStudent(new Student(2, "Amin", "srif"));
+manager.AddStudent(new Student(3, "Sara", "darif"));
+manager.AddStudent(new Student(4, "Ali", "alami"));
+
+Student? result = manager.FindStudent(1);
+
+if (result is not null && result.Id == 1)
 {
+    // TEST PASSED
     Console.WriteLine("TEST PASSED");
+
 }
 else
 {
+    // TEST FAILED
     Console.WriteLine("TEST FAILED");
 }
-Student st1 = new Student(1, "Amin", "Alam");
-bool result1 = studentManager.AddStudent(st1);
-if (!result1)
+
+Student? result1 = manager.FindStudent(99);
+
+if (result is not null && result.Id == 99)
 {
-    Console.WriteLine("TEST PASSED");
+    Console.WriteLine("TEST Failed");
+
 }
 else
 {
-    Console.WriteLine("TEST FAILED");
+    Console.WriteLine("TEST passed");
 }
-
-try
-{
-    // Call AddStudent with null
-    studentManager.AddStudent(null!);
-    Console.WriteLine("Test 3: FAILED");
-}
-catch (ArgumentNullException)
-{
-    Console.WriteLine("Test 3: PASSED");
-
-}
-

@@ -16,6 +16,14 @@ namespace StudentAbsenceManagement
             }
             return students.TryAdd(student.Id, student);    
         }
+        public Student? FindStudent(int id)
+        {
+            if (students.TryGetValue(id, out Student? student))
+            {
+                return student;
+            }
 
+            return null;
+        }
     }
 }
