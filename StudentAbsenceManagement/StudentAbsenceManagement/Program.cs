@@ -108,10 +108,54 @@ using System.Security.Cryptography;
 //    Console.WriteLine("TEST passed");
 //}
 ////////////// Test the GetAllStudent method 
-StudentManager emptyManager = new();
+//StudentManager emptyManager = new();
 
-List<Student> result1 = emptyManager.GetAllStudents();
-if (result1.Count == 0)
+//List<Student> result1 = emptyManager.GetAllStudents();
+//if (result1.Count == 0)
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
+
+//StudentManager manager = new();
+
+//manager.AddStudent(new Student(1, "Ahmed", "Alami"));
+//manager.AddStudent(new Student(2, "Sara", "Bennani"));
+//manager.AddStudent(new Student(3, "Youssef", "Idrissi"));
+
+//List<Student> result2 = manager.GetAllStudents();
+//if (result2.Count ==3 && result2.Any(s => s.Id == 1 && result2.Any(s => s.Id == 2) && result2.Any(s => s.Id == 3)))
+//{
+//    Console.WriteLine("Test 2: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 2: FAILED");
+//}
+
+//List<Student> result3 = manager.GetAllStudents();
+
+//result3.Clear();
+//if (result3.Count == 0 &&
+//    manager.GetAllStudents().Count == 3)
+//{
+//    Console.WriteLine("Test 3: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 3: FAILED");
+//}
+DateTime absenceDate = new DateTime(2026, 11, 5);
+
+Absence absence = new Absence(1, 5, absenceDate, false);
+
+if (absence.Id == 1 &&
+    absence.StudentId == 5 &&
+    absence.Date == absenceDate &&
+    !absence.IsJustified)
 {
     Console.WriteLine("Test 1: PASSED");
 }
@@ -119,32 +163,54 @@ else
 {
     Console.WriteLine("Test 1: FAILED");
 }
-
-StudentManager manager = new();
-
-manager.AddStudent(new Student(1, "Ahmed", "Alami"));
-manager.AddStudent(new Student(2, "Sara", "Bennani"));
-manager.AddStudent(new Student(3, "Youssef", "Idrissi"));
-
-List<Student> result2 = manager.GetAllStudents();
-if (result2.Count ==3 && result2.Any(s => s.Id == 1 && result2.Any(s => s.Id == 2) && result2.Any(s => s.Id == 3)))
+try
 {
-    Console.WriteLine("Test 2: PASSED");
-}
-else
-{
+    Absence invalid = new Absence(
+        0, 5, new DateTime(2026, 11, 5), false);
+
     Console.WriteLine("Test 2: FAILED");
 }
-
-List<Student> result3 = manager.GetAllStudents();
-
-result3.Clear();
-if (result3.Count == 0 &&
-    manager.GetAllStudents().Count == 3)
+catch (ArgumentOutOfRangeException ex)
 {
-    Console.WriteLine("Test 3: PASSED");
+    if (ex.ParamName == "id")
+    {
+        Console.WriteLine("Test 2: PASSED");
+    }
+    else
+    {
+        Console.WriteLine("Test 2: FAILED");
+    }
 }
-else
+try
 {
+    Absence absence1 = new Absence(3, -7, absenceDate, false);
     Console.WriteLine("Test 3: FAILED");
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    if (ex.ParamName == "studentId")
+    {
+        Console.WriteLine("Test 3: PASSED");
+    }
+    else
+    {
+        Console.WriteLine("Test 3: FAILED");
+    }
+}
+
+try
+{
+    Absence absence1 = new Absence(1, 5, DateTime.MinValue, false);
+    Console.WriteLine("Test 4: FAILED");
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    if (ex.ParamName == "date")
+    {
+        Console.WriteLine("Test 4: PASSED");
+    }
+    else
+    {
+        Console.WriteLine("Test 4: FAILED");
+    }
 }
