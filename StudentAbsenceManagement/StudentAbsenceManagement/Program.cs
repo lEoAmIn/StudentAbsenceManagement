@@ -108,43 +108,210 @@ using System.Security.Cryptography;
 //    Console.WriteLine("TEST passed");
 //}
 ////////////// Test the GetAllStudent method 
-StudentManager emptyManager = new();
+//StudentManager emptyManager = new();
 
-List<Student> result1 = emptyManager.GetAllStudents();
-if (result1.Count == 0)
-{
-    Console.WriteLine("Test 1: PASSED");
-}
-else
-{
-    Console.WriteLine("Test 1: FAILED");
-}
+//List<Student> result1 = emptyManager.GetAllStudents();
+//if (result1.Count == 0)
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
 
-StudentManager manager = new();
+//StudentManager manager = new();
 
-manager.AddStudent(new Student(1, "Ahmed", "Alami"));
-manager.AddStudent(new Student(2, "Sara", "Bennani"));
-manager.AddStudent(new Student(3, "Youssef", "Idrissi"));
+//manager.AddStudent(new Student(1, "Ahmed", "Alami"));
+//manager.AddStudent(new Student(2, "Sara", "Bennani"));
+//manager.AddStudent(new Student(3, "Youssef", "Idrissi"));
 
-List<Student> result2 = manager.GetAllStudents();
-if (result2.Count ==3 && result2.Any(s => s.Id == 1 && result2.Any(s => s.Id == 2) && result2.Any(s => s.Id == 3)))
-{
-    Console.WriteLine("Test 2: PASSED");
-}
-else
-{
-    Console.WriteLine("Test 2: FAILED");
-}
+//List<Student> result2 = manager.GetAllStudents();
+//if (result2.Count ==3 && result2.Any(s => s.Id == 1 && result2.Any(s => s.Id == 2) && result2.Any(s => s.Id == 3)))
+//{
+//    Console.WriteLine("Test 2: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 2: FAILED");
+//}
 
-List<Student> result3 = manager.GetAllStudents();
+//List<Student> result3 = manager.GetAllStudents();
 
-result3.Clear();
-if (result3.Count == 0 &&
-    manager.GetAllStudents().Count == 3)
-{
-    Console.WriteLine("Test 3: PASSED");
-}
-else
-{
-    Console.WriteLine("Test 3: FAILED");
-}
+//result3.Clear();
+//if (result3.Count == 0 &&
+//    manager.GetAllStudents().Count == 3)
+//{
+//    Console.WriteLine("Test 3: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 3: FAILED");
+//}
+//DateTime absenceDate = new DateTime(2026, 11, 5);
+
+//Absence absence = new Absence(1, 5, absenceDate, false);
+
+//if (absence.Id == 1 &&
+//    absence.StudentId == 5 &&
+//    absence.Date == absenceDate &&
+//    !absence.IsJustified)
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
+//try
+//{
+//    Absence invalid = new Absence(
+//        0, 5, new DateTime(2026, 11, 5), false);
+
+//    Console.WriteLine("Test 2: FAILED");
+//}
+//catch (ArgumentOutOfRangeException ex)
+//{
+//    if (ex.ParamName == "id")
+//    {
+//        Console.WriteLine("Test 2: PASSED");
+//    }
+//    else
+//    {
+//        Console.WriteLine("Test 2: FAILED");
+//    }
+//}
+//try
+//{
+//    Absence absence1 = new Absence(3, -7, absenceDate, false);
+//    Console.WriteLine("Test 3: FAILED");
+//}
+//catch (ArgumentOutOfRangeException ex)
+//{
+//    if (ex.ParamName == "studentId")
+//    {
+//        Console.WriteLine("Test 3: PASSED");
+//    }
+//    else
+//    {
+//        Console.WriteLine("Test 3: FAILED");
+//    }
+//}
+
+//try
+//{
+//    Absence absence1 = new Absence(1, 5, DateTime.MinValue, false);
+//    Console.WriteLine("Test 4: FAILED");
+//}
+//catch (ArgumentOutOfRangeException ex)
+//{
+//    if (ex.ParamName == "date")
+//    {
+//        Console.WriteLine("Test 4: PASSED");
+//    }
+//    else
+//    {
+//        Console.WriteLine("Test 4: FAILED");
+//    }
+//}
+
+//StudentManager studentManager = new StudentManager();
+
+//studentManager.AddStudent(
+//    new Student(1, "Ahmed", "Alami"));
+
+//AbsenceManager absenceManager =
+//    new AbsenceManager(studentManager);
+
+//Absence absence = new Absence(
+//    10, 1, new DateTime(2026, 11, 5), false);
+//bool result = absenceManager.RecordAbsence(absence);
+
+//if (result)
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
+//Absence invalidAbsence = new Absence(11, 999, new DateTime(2026, 11, 5), false);
+//result = absenceManager.RecordAbsence(invalidAbsence);
+
+//if (!result)
+//{
+//    Console.WriteLine("Test 2: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 2: FAILED");
+//}
+//Absence idAbsence = new Absence(10, 1, new DateTime(2026, 11, 5), true);
+//result = absenceManager.RecordAbsence(idAbsence);
+
+//if (!result)
+//{
+//    Console.WriteLine("Test 3: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 3: FAILED");
+//}
+//try
+//{
+//    absenceManager.RecordAbsence(null!);
+
+//    Console.WriteLine("Test 4: FAILED");
+//}
+//catch (ArgumentNullException ex)
+//{
+//    if (ex.ParamName == "absence")
+//    {
+//        Console.WriteLine("Test 4: PASSED");
+//    }
+//    else
+//    {
+//        Console.WriteLine("Test 4: FAILED");
+//    }
+//}
+
+StudentManager studentManager = new StudentManager();
+
+studentManager.AddStudent(new Student(4, "Ahmed", "Alami"));
+studentManager.AddStudent(new Student(2, "Sara", "Bennani"));
+studentManager.AddStudent(new Student(3, "Youssef", "Amrani"));
+
+AbsenceManager absenceManager = new AbsenceManager(studentManager);
+
+//absenceManager.RecordAbsence(
+//    new Absence(10, 1, new DateTime(2026, 11, 1), false));
+
+//absenceManager.RecordAbsence(
+//    new Absence(11, 2, new DateTime(2026, 11, 2), false));
+
+//absenceManager.RecordAbsence(
+//    new Absence(12, 1, new DateTime(2026, 11, 3), true));
+
+//absenceManager.RecordAbsence(
+//    new Absence(13, 2, new DateTime(2026, 11, 4), false));
+//List<Absence> result = absenceManager.GetAbsencesByStudent(1);
+
+//if (result.Count !=0 && result.Any(a => a.Id == 10) && result.Any(a => a.Id == 12))
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
+//Absence? result1 = absenceManager.GetAbsenceById(999);
+//if ((result1 is  null) )
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
+StudentAbsenceMenu menu = new StudentAbsenceMenu(studentManager,absenceManager);
+menu.Run();
