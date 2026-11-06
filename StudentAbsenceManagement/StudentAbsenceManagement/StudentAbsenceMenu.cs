@@ -45,22 +45,7 @@
                         break;
 
                     case 2:
-                        List<Student> students = studentManager.GetAllStudents();
-
-                        if (students.Count == 0)
-                        {
-                            Console.WriteLine("No students found.");
-                            break;
-                        }
-
-                        Console.WriteLine("\n===== STUDENT LIST =====");
-
-                        foreach (Student student in students)
-                        {
-                            Console.WriteLine(
-                                $"ID: {student.Id} | " +
-                                $"Name: {student.FirstName} {student.LastName}");
-                        }
+                        DisplayStudents();
 
                         break;
 
@@ -170,6 +155,25 @@
             catch (ArgumentException ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+        private void DisplayStudents()
+        {
+            List<Student> students = studentManager.GetAllStudents();
+
+            if (students.Count == 0)
+            {
+                Console.WriteLine("No students found.");
+                return;
+            }
+
+            Console.WriteLine("\n===== STUDENT LIST =====");
+
+            foreach (Student student in students)
+            {
+                Console.WriteLine(
+                    $"ID: {student.Id} | " +
+                    $"Name: {student.FirstName} {student.LastName}");
             }
         }
     }
