@@ -12,6 +12,7 @@
             this.absenceManager = absenceManager;
         }
 
+
         public void Run()
         {
             bool running = true;
@@ -40,47 +41,7 @@
                         break;
 
                     case 1:
-                        Console.Write("Enter student ID: ");
-                        if (!int.TryParse(Console.ReadLine(), out int studentId)
-                            || studentId <= 0)
-                        {
-                            Console.WriteLine("Invalid student ID.");
-                            break;
-                        }
-
-                        Console.Write("Enter first name: ");
-                        string? firstName = Console.ReadLine();
-
-                        if (string.IsNullOrWhiteSpace(firstName))
-                        {
-                            Console.WriteLine("First name cannot be empty.");
-                            break;
-                        }
-
-                        Console.Write("Enter last name: ");
-                        string? lastName = Console.ReadLine();
-
-                        if (string.IsNullOrWhiteSpace(lastName))
-                        {
-                            Console.WriteLine("Last name cannot be empty.");
-                            break;
-                        }
-
-                        try
-                        {
-                            Student student = new Student(
-                                studentId, firstName, lastName);
-
-                            if (studentManager.AddStudent(student))
-                                Console.WriteLine("Student added successfully.");
-                            else
-                                Console.WriteLine("A student with this ID already exists.");
-                        }
-                        catch (ArgumentException ex)
-                        {
-                            Console.WriteLine($"Error: {ex.Message}");
-                        }
-
+                        AddStudent();
                         break;
 
                     case 2:
@@ -166,7 +127,50 @@
                         break;
                 }
             }
+        
         }
+        private void AddStudent()
+        {
+            Console.Write("Enter student ID: ");
+            if (!int.TryParse(Console.ReadLine(), out int studentId)
+                || studentId <= 0)
+            {
+                Console.WriteLine("Invalid student ID.");
+                return;
+            }
 
+            Console.Write("Enter first name: ");
+            string? firstName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(firstName))
+            {
+                Console.WriteLine("First name cannot be empty.");
+                return;
+            }
+
+            Console.Write("Enter last name: ");
+            string? lastName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(lastName))
+            {
+                Console.WriteLine("Last name cannot be empty.");
+                return;
+            }
+
+            try
+            {
+                Student student = new Student(
+                    studentId, firstName, lastName);
+
+                if (studentManager.AddStudent(student))
+                    Console.WriteLine("Student added successfully.");
+                else
+                    Console.WriteLine("A student with this ID already exists.");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
     }
 }
