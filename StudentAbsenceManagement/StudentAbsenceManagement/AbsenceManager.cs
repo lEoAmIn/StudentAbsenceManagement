@@ -32,5 +32,15 @@ namespace StudentAbsenceManagement
              absences.TryGetValue(id,out Absence? absence);
             return absence;
         }
+        public bool JustifyAbsence(int absenceId)
+        {
+            // 1. Find the absence.
+            Absence? absence = GetAbsenceById(absenceId);
+            // 2. Return false if it doesn't exist.
+            if (absence is null) return false;
+            // 3. Call Justify() on the found Absence.
+            // 4. Return the result.
+            return absence.Justify();
+        }
     }
 }
