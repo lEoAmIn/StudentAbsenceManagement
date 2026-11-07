@@ -23,6 +23,7 @@
                 Console.WriteLine("1. Add a student");
                 Console.WriteLine("2. Display all students");
                 Console.WriteLine("3. Record an absence");
+                Console.WriteLine("4. Justify an absence");
                 Console.WriteLine("0. Exit");
                 Console.Write("Choose an option: ");
 
@@ -51,6 +52,9 @@
 
                     case 3:
                         RecordAbsence();
+                        break;
+                    case 4:
+                        JustifyAbsence();
                         break;
                     default:
                         Console.WriteLine("Unknown menu option.");
@@ -176,6 +180,32 @@
             catch (ArgumentException ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+        private void JustifyAbsence()
+        {
+            Console.Write("Enter absence ID: ");
+            if (!int.TryParse(Console.ReadLine(), out int absenceId)
+                || absenceId <= 0)
+            {
+                Console.WriteLine("Invalid absence ID.");
+                return;
+            }
+            Absence? absence = absenceManager.GetAbsenceById(absenceId);
+
+            if (absence is null)
+            {
+                Console.WriteLine("Absence not found.");
+                return;
+            }
+
+            if (absenceManager.JustifyAbsence(absenceId))
+            {
+                Console.WriteLine("Absence justified successfully.");
+            }
+            else
+            {
+                Console.WriteLine("This absence is already justified.");
             }
         }
     }

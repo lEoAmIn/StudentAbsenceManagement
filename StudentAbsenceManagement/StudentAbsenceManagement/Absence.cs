@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace StudentAbsenceManagement
@@ -9,7 +10,7 @@ namespace StudentAbsenceManagement
         public int Id { get; }
         public int StudentId { get; }
         public DateTime Date { get; }
-        public bool IsJustified { get; }
+        public bool IsJustified { get; private set; }
         public Absence(int id, int studentId, DateTime date, bool isJustified)
         {
             if (id <= 0) {
@@ -27,6 +28,13 @@ namespace StudentAbsenceManagement
             Date = date;
             IsJustified = isJustified;
         }
+        public bool Justify()
+        {
+            if (IsJustified)
+                return false;
 
+            IsJustified = true;
+            return true;
+        }
     }
 }

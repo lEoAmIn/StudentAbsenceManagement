@@ -292,8 +292,8 @@ AbsenceManager absenceManager = new AbsenceManager(studentManager);
 //absenceManager.RecordAbsence(
 //    new Absence(12, 1, new DateTime(2026, 11, 3), true));
 
-//absenceManager.RecordAbsence(
-//    new Absence(13, 2, new DateTime(2026, 11, 4), false));
+absenceManager.RecordAbsence(
+    new Absence(10, 2, new DateTime(2026, 11, 4), false));
 //List<Absence> result = absenceManager.GetAbsencesByStudent(1);
 
 //if (result.Count !=0 && result.Any(a => a.Id == 10) && result.Any(a => a.Id == 12))
@@ -313,5 +313,30 @@ AbsenceManager absenceManager = new AbsenceManager(studentManager);
 //{
 //    Console.WriteLine("Test 1: FAILED");
 //}
-StudentAbsenceMenu menu = new StudentAbsenceMenu(studentManager,absenceManager);
+StudentAbsenceMenu menu = new StudentAbsenceMenu(studentManager, absenceManager);
 menu.Run();
+//bool result = absenceManager.JustifyAbsence(10);
+//result = absenceManager.JustifyAbsence(10);
+//Absence? absence = absenceManager.GetAbsenceById(10);
+
+//if (!result && absence is not null && absence.IsJustified)
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
+//result = absenceManager.JustifyAbsence(999);
+//absence = absenceManager.GetAbsenceById(999);
+
+//if (!result && absence is  null )
+//{
+//    Console.WriteLine("Test 1: PASSED");
+//}
+//else
+//{
+//    Console.WriteLine("Test 1: FAILED");
+//}
+//absence = absenceManager.GetAbsenceById(10);
+//Console.WriteLine(absence.IsJustified);
