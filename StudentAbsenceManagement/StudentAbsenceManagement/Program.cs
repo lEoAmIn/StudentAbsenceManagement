@@ -286,11 +286,11 @@ AbsenceManager absenceManager = new AbsenceManager(studentManager);
 //absenceManager.RecordAbsence(
 //    new Absence(10, 1, new DateTime(2026, 11, 1), false));
 
-//absenceManager.RecordAbsence(
-//    new Absence(11, 2, new DateTime(2026, 11, 2), false));
+absenceManager.RecordAbsence(
+    new Absence(11, 2, new DateTime(2026, 11, 2), false));
 
-//absenceManager.RecordAbsence(
-//    new Absence(12, 1, new DateTime(2026, 11, 3), true));
+absenceManager.RecordAbsence(
+    new Absence(12, 1, new DateTime(2026, 11, 3), true));
 
 absenceManager.RecordAbsence(
     new Absence(10, 2, new DateTime(2026, 11, 4), false));

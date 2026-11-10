@@ -24,6 +24,8 @@
                 Console.WriteLine("2. Display all students");
                 Console.WriteLine("3. Record an absence");
                 Console.WriteLine("4. Justify an absence");
+                Console.WriteLine("5. search for an absence");
+                Console.WriteLine("6. search for an absence by student ID");
                 Console.WriteLine("0. Exit");
                 Console.Write("Choose an option: ");
 
@@ -55,6 +57,11 @@
                         break;
                     case 4:
                         JustifyAbsence();
+                        break;
+                    case 5: SearchByAbsenceId();
+                        break;
+                    case 6:
+                        SearchByStudentId();
                         break;
                     default:
                         Console.WriteLine("Unknown menu option.");
@@ -208,5 +215,47 @@
                 Console.WriteLine("This absence is already justified.");
             }
         }
+        private void SearchByAbsenceId()
+        {
+            // Search one absence.
+            Console.Write("Enter absence ID: ");
+            if (!int.TryParse(Console.ReadLine(), out int absenceId)
+                || absenceId <= 0)
+            {
+                Console.WriteLine("Invalid absence ID.");
+                return;
+            }
+            Absence? absence = absenceManager.GetAbsenceById(absenceId);
+            if (absence is null)
+            {
+                Console.WriteLine("Absence not found.");
+                return;
+            }
+            Console.WriteLine($"ID :{absence.Id} | StudentID:{absence.StudentId} | absence date : {absence.Date:yyyy-MM-dd}" +
+                $"| Status: {(absence.IsJustified ? "Justified" : "Unjustified")}");
+        }
+        private void SearchByStudentId()
+        {
+            // Search all absences belonging to a student.
+            Console.Write("Enter Student ID: ");
+            if (!int.TryParse(Console.ReadLine(), out int studentId)
+                || studentId <= 0)
+            {
+                Console.WriteLine("Invalid Student ID.");
+                return;
+            }
+            List<Absence> list = absenceManager.GetAbsencesByStudent(studentId);
+            if (list.Count == 0)
+            {
+                Console.WriteLine("No absences found for this student.");
+                return;
+            }
+            foreach (Absence absence in list) {
+                Console.WriteLine(
+                    $"ID: {absence.Id} | StudentID: {absence.StudentId} " +
+                    $"| Date: {absence.Date:yyyy-MM-dd} " +
+                    $"| Status: {(absence.IsJustified ? "Justified" : "Unjustified")}");
+            }
+        } 
     }
 }
