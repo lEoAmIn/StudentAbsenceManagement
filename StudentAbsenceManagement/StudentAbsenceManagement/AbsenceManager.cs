@@ -42,5 +42,6 @@ namespace StudentAbsenceManagement
             // 4. Return the result.
             return absence.Justify();
         }
+         
     }
 }

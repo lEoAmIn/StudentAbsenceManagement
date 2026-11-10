@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/StudentAbsenceManagement/">
+    <Project Path="StudentAbsenceManagement/StudentAbsenceManagement/StudentAbsenceManagement.csproj" />
+  </Folder>
+  <Project Path="StudentAbsenceManagement.Tests/StudentAbsenceManagement.Tests.csproj" />
+</Solution>
